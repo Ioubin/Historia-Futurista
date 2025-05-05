@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Historia Futurista</title>
+ <link rel="icon" type="image/x-icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    </head>
+<body>
+    <header>
+      <div class="logo">
+         <a href="index.html"><img src="img/logo.png"></a>
+      </div>
+        <div class="esco">
+          <a href="#" id="icono"> <i class="fa fa-bars" style="color:black"; aria-hidden="true"></i> </a>
+        </div>
+        <nav id="navegador"> 
+          <div class="boton">
+               <a href="vanguardia.html">Vanguardia</a>
+              </div>
+          <div class="boton">
+              <a href="linea de tiempo.html">Linea de Tiempo</a>
+              </div>
+          <div class="boton">
+              <a href="artistas.html">Artistas</a>
+              </div>
+              <div class="boton">
+                <a href="obras.html">Obras</a>
+                </div>
+                <div class="boton">
+                  <a href="futu_ww2.html">Futurismo en la segunda guerra mundial</a>
+                  </div>
+                  <div class="boton">
+                    <a href="contacto.html">Contacto</a>
+                    </div>
+        </nav>
+    </header>
+
+<section class="hero-image"> 
+    <img src="img/manifesto.png" alt="Manifiesto Futurista">
+</section>
+
+<section class="content">
+  <div class="text-container">
+    <p>El Futurismo fue un movimiento artístico y cultural nacido en Italia a comienzos del siglo XX, fundado oficialmente por el poeta Filippo Tommaso Marinetti con la publicación del Manifiesto Futurista el 20 de febrero de 1909 en el diario Le Figaro de París. Este manifiesto fue un llamado a la revolución estética y social: rechazaba el pasado, los museos, las tradiciones académicas y celebraba en su lugar todo lo que representaba la modernidad.</p>
+
+    <p>El Manifiesto Futurista proclamaba una nueva forma de ver el mundo, en la que la velocidad, el ruido, la tecnología, el riesgo y la agresividad eran los valores centrales. Marinetti exaltaba la belleza de los automóviles rugientes, los trenes, las fábricas, los aviones y la vida urbana. Afirmaba que la guerra era "la única higiene del mundo" y que había que destruir las instituciones pasadas para dejar espacio al futuro. También proponía glorificar la juventud, la audacia y el espíritu combativo, criticando abiertamente a los intelectuales, académicos y moralistas del siglo XIX.</p>
+    
+    <p>Estos ideales rápidamente se trasladaron a otras disciplinas: en 1910, un grupo de artistas plásticos liderado por Umberto Boccioni, Giacomo Balla y Carlo Carrà firmó el Manifiesto de los Pintores Futuristas, aplicando las ideas del texto de Marinetti a la pintura. Allí se promovía representar no solo el objeto en sí, sino el movimiento, la multiplicidad de puntos de vista y el ritmo de la vida moderna. Más adelante surgieron manifiestos para la escultura, la arquitectura, la música, la literatura, el cine, el diseño y hasta la moda.</p>
+    
+    <p>Durante su apogeo, el Futurismo revolucionó la forma de pensar el arte y la sociedad. Sus obras buscaban romper con la lógica tradicional: líneas diagonales, composiciones dinámicas, uso intenso del color y temas ligados a la ciudad, las máquinas y la energía. Pero también generó controversia por su contenido provocador, su apoyo a la guerra y, en algunos casos, su cercanía a posturas políticas autoritarias como el fascismo.</p>
+    
+    <p>Tras la Primera Guerra Mundial, y especialmente con la muerte prematura de Boccioni en 1916, el movimiento comenzó a perder fuerza. Sin embargo, su influencia perduró en otras vanguardias como el Constructivismo ruso, el Dadaísmo, el Surrealismo, la Bauhaus y muchos movimientos del diseño moderno. En la actualidad, el Futurismo se reconoce como uno de los pilares de la modernidad artística, y su mensaje, aunque polémico, sigue siendo provocador y vigente: el arte debe mirar hacia el futuro, no hacia el pasado.</p>
+  </div>
+</section>
+
+
+
+   <footer>
+      <div class="redes">
+        <p>Contáctanos por nuesta pestaña de <a href="contacto.html" style="color:wheat";>Contacto</a> o envía un correo a contacto@HF.com</p>
+        <p>Creado por Ignacio Oubiña</p>
+        <p>Aviso legal</p>
+        <a href="https:/www.facebook.com/" ; target="_blank">
+          <i
+            class="fa fa-facebook-official fa-2x fa-inverse"style="color:rgb(253, 253, 253)";
+            aria-hidden="true"
+          >
+        </i>
+        </a>
+        <a href="https:/www.twitter.com/" ; target="_blank">
+          <i class="fa fa-twitter fa-2x fa-inverse"style="color:rgb(253, 253, 253)"; aria-hidden="true"></i>
+        </a>
+        <a href="https:/www.youtube.com/" ; target="_blank">
+          <i class="fa fa-youtube-play fa-2x fa-inverse" style="color:rgb(253, 253, 253)"; aria-hidden="true"></i>
+        </a>
+        <a href="https:/instagram.com/" ; target="_blank">
+          <i class="fa fa-instagram fa-2x fa-inverse"; style="color:rgb(255, 255, 255)"; aria-hidden="true"></i>
+        </a>
+      </div>
+   </footer>
+    <script>
+        document.getElementById('icono').addEventListener('click', function() {
+            document.getElementById('navegador').classList.toggle('mostrarmenu');
+        });
+    </script>
+
+    <script>
+        let currentSlide = 0;
+         
+        function showSlide(index) {
+          const slides = document.querySelectorAll('.slide');
+          const totalSlides = slides.length;
+         
+          if (index >= totalSlides) {
+            currentSlide = 0;
+          } else if (index < 0) {
+            currentSlide = totalSlides - 1;
+          } else {
+            currentSlide = index;
+          }
+         
+          slides.forEach((slide, i) => {
+            slide.style.display = i === currentSlide ? 'block' : 'none';
+          });
+        }
+         
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+         
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+         
+        // Cambia automáticamente de diapositiva cada 3 segundos (ajusta según tus necesidades)
+        setInterval(nextSlide, 3000);
+         
+        // Muestra la primera diapositiva al cargar la página
+        showSlide(currentSlide);  
+        </script>
+    
+</body>
+</html>

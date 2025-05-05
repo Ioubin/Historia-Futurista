@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Historia Futurista</title>
+ <link rel="icon" type="image/x-icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    </head>
+<body>
+    <header>
+      <div class="logo">
+         <a href="index.html"><img src="img/logo.png"></a>
+      </div>
+        <div class="esco">
+          <a href="#" id="icono"> <i class="fa fa-bars" style="color:black"; aria-hidden="true"></i> </a>
+        </div>
+        <nav id="navegador"> 
+          <div class="boton">
+               <a href="vanguardia.html">Vanguardia</a>
+              </div>
+          <div class="boton">
+              <a href="linea de tiempo.html">Linea de Tiempo</a>
+              </div>
+          <div class="boton">
+              <a href="artistas.html">Artistas</a>
+              </div>
+              <div class="boton">
+                <a href="obras.html">Obras</a>
+                </div>
+                <div class="boton">
+                  <a href="futu_ww2.html">Futurismo en la segunda guerra mundial</a>
+                  </div>
+                  <div class="boton">
+                    <a href="contacto.html">Contacto</a>
+                    </div>
+        </nav>
+    </header>
+
+  <div class="h2">
+    <h2>Los padres del Futurismo</h2> 
+  </div>
+
+  <section class="artists-section">
+    <div class="artists-row">
+      <div class="artist-card">
+        <div class="artist-image">
+          <img src="img/artistas/gi.png" alt="Giacomo Balla">
+        </div>
+        <div class="artist-info">
+          <h3>Giacomo Balla (1871–1958)</h3>
+          <p>Fue un pintor y diseñador italiano que jugó un rol esencial en el desarrollo del Futurismo. 
+          Exploró el uso del color y la forma para representar el movimiento, la luz y la velocidad. 
+          Fue coautor del Manifiesto de los Pintores Futuristas y creó obras vibrantes y abstractas que reflejan la energía del siglo XX.
+          Más adelante, también aplicó los principios futuristas al diseño de objetos, moda y espacios.</p>
+        </div>
+      </div>
+
+      <div class="artist-card">
+        <div class="artist-image">
+          <img src="img/artistas/um.png" alt="Umberto Boccioni">
+        </div>
+        <div class="artist-info">
+          <h3>Umberto Boccioni (1882–1916)</h3>
+          <p>Fue un pintor y escultor italiano, figura clave del Futurismo. Se unió al movimiento en 1910 y ayudó a definir su estilo visual, 
+          centrado en el movimiento, la energía y la modernidad. Sus obras más famosas, como Formas únicas de continuidad en el espacio,
+          buscaban representar la velocidad y el dinamismo del mundo moderno. Aunque murió joven durante la Primera Guerra Mundial, 
+          dejó una gran influencia en el arte contemporáneo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="artists-row">
+      <div class="artist-card">
+        <div class="artist-image">
+          <img src="img/artistas/fi.png" alt="Filippo Tommaso Marinetti">
+        </div>
+        <div class="artist-info">
+          <h3>Filippo Tommaso Marinetti (1876–1944)</h3>
+          <p>Fue un poeta, dramaturgo y editor italiano, conocido por ser el fundador del movimiento futurista. 
+          En 1909 publicó el Manifiesto Futurista en el diario francés Le Figaro, donde propuso una ruptura total con el pasado y exaltó la velocidad,
+          la tecnología, la juventud y la violencia como símbolos de una nueva era.
+          Marinetti promovió una estética revolucionaria que celebraba los autos, las máquinas y la guerra como formas de renovación cultural. 
+          Su estilo provocador y radical influyó no solo en la literatura, sino también en la pintura, la escultura, el diseño y la política.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<footer>
+  <div class="redes">
+    <p>Contáctanos por nuesta pestaña de <a href="contacto.html" style="color:wheat";>Contacto</a> o envía un correo a contacto@HF.com</p>
+    <p>Creado por Ignacio Oubiña</p>
+    <p>Aviso legal</p>
+    <a href="https:/www.facebook.com/" ; target="_blank">
+      <i
+        class="fa fa-facebook-official fa-2x fa-inverse"style="color:rgb(253, 253, 253)";
+        aria-hidden="true"
+      >
+    </i>
+    </a>
+    <a href="https:/www.twitter.com/" ; target="_blank">
+      <i class="fa fa-twitter fa-2x fa-inverse"style="color:rgb(253, 253, 253)"; aria-hidden="true"></i>
+    </a>
+    <a href="https:/www.youtube.com/" ; target="_blank">
+      <i class="fa fa-youtube-play fa-2x fa-inverse" style="color:rgb(253, 253, 253)"; aria-hidden="true"></i>
+    </a>
+    <a href="https:/instagram.com/" ; target="_blank">
+      <i class="fa fa-instagram fa-2x fa-inverse"; style="color:rgb(255, 255, 255)"; aria-hidden="true"></i>
+    </a>
+  </div>
+
+    <script>
+        document.getElementById('icono').addEventListener('click', function() {
+            document.getElementById('navegador').classList.toggle('mostrarmenu');
+        });
+    </script>
+
+    <script>
+        let currentSlide = 0;
+         
+        function showSlide(index) {
+          const slides = document.querySelectorAll('.slide');
+          const totalSlides = slides.length;
+         
+          if (index >= totalSlides) {
+            currentSlide = 0;
+          } else if (index < 0) {
+            currentSlide = totalSlides - 1;
+          } else {
+            currentSlide = index;
+          }
+         
+          slides.forEach((slide, i) => {
+            slide.style.display = i === currentSlide ? 'block' : 'none';
+          });
+        }
+         
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+         
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+         
+        // Cambia automáticamente de diapositiva cada 3 segundos (ajusta según tus necesidades)
+        setInterval(nextSlide, 3000);
+         
+        // Muestra la primera diapositiva al cargar la página
+        showSlide(currentSlide);  
+        </script>
+    
+</body>
+</html>
