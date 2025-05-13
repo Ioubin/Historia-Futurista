@@ -23,9 +23,12 @@ $header="From: ".$nombre."<".$email.">";
 include "conectar.php";
 
 
+
 // $consulta=mysqli_query($conexion, "INSERT INTO contactos VALUES ('','$nombre','$email','$localidad','$comentario')");
 
 $consulta = mysqli_query($conexion, "INSERT INTO contactos (nombre,email,asunto,mensaje)VALUES ( '$nombre','$email','$asunto','$mensaje')") or die(mysqli_error($conexion));
+
+header ("location:respuesta.html")
 
 ?>
 </body>
