@@ -46,26 +46,21 @@
 </div>
     <section class="contact-section">
         <div class="form">
-          <form id="formcontacto" action="enviar.php" method="post">
+            <<form id="formcontacto" action="enviar.php" method="post"> 
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre">Nombre y apellido</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="asunto">Asunto</label>
-                    <select id="asunto" name="asunto" required>
-                        <option value="">Selecciona un asunto</option>
-                        <option value="consulta">Consulta general</option>
-                        <option value="sugerencia">Sugerencia</option>
-                        <option value="error">Reportar error</option>
-                        <option value="colaboracion">Propuesta de colaboración</option>
-                    </select>
-                </div>
+                  <label for="asunto">asunto</label>
+                  <textarea id="asunto" name="asunto" placeholder="Decinos tu asunto" required></textarea>
+              </div>
 
                 <div class="form-group">
                     <label for="mensaje">Mensaje</label>
@@ -122,4 +117,3 @@ scrolling="no"></iframe>
     
 </body>
 </html>
-

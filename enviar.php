@@ -12,23 +12,15 @@
 $nombre=$_POST['nombre'];
 $email=$_POST['email'];
 $asunto=$_POST['asunto'];
-$mensaje=$_POST['mensaje'];
+$mensaje=$_POST["mensaje"];
 
 $destino="mail@mail.com,mail2@mail.com";
-$asunto="Contacto desde el sitio";
-$mensaje="Nombre: ".$nombre." Email: ".$email." Asunto: ".$asunto." Mensaje: ".$mensaje;
+$asunto="".$asunto;
+$mensaje="".$mensaje;
 
 $header="From: ".$nombre."<".$email.">";
 
-@$enviado = mail($destino,$asunto,$mensaje,$header);
-
-if($enviado == true){
-	echo "Su correo ha sido enviado.";
-}else{
-	echo "Hubo un error en el envio del mail.";
-}
-
-$conexion = mysqli_connect("localhost","root","", "contactos") or die('No se pudo conectar al servidor');
+include "conectar.php";
 
 
 // $consulta=mysqli_query($conexion, "INSERT INTO contactos VALUES ('','$nombre','$email','$localidad','$comentario')");
@@ -37,4 +29,4 @@ $consulta = mysqli_query($conexion, "INSERT INTO contactos (nombre,email,asunto,
 
 ?>
 </body>
-</html>
+</html>	
