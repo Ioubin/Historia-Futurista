@@ -45,17 +45,68 @@
     <h2>Los padres del Futurismo</h2> 
   </div>
 
-  <div class="form">
+
+<div class="form">
  
-    <div class="form-group">
-    <form action="resultados.php" method="post">
-      <label>Buscar Artistas
-      <input type="search" name="buscar" placeholder="Buscar..." />
-      <input type="submit" value="Enviar">
-      </label>
-      </form>
-    </div>
+  <div class="form-group">
+  <form action="resultados.php" method="post">
+    <label>Buscar Artistas
+    <input type="search" name="buscar" placeholder="Buscar..." />
+    <input type="submit" value="Enviar">
+    </label>
+    </form>
   </div>
+</div>
+
+	<section>
+
+    <h1 style= "padding: 10px;
+    display: flex;
+    justify-content: center;
+     "> 
+<?php
+
+	include('conectar.php');
+
+	$buscar = $_POST['buscar'];
+  	echo "Su consulta: <em>".$buscar."</em><br>"; 
+
+	$consulta = mysqli_query($conexion, "SELECT * FROM artistas WHERE nombre LIKE '%$buscar%'");
+?>
+</h1>
+
+<article style="    width: 60%;
+    margin: 0 auto;
+    padding: 10px;
+    justify-items: center;">
+
+   <h2 style="padding: 10px">
+	<p>Cantidad de Resultados:
+	<?php
+		$nros=mysqli_num_rows($consulta);
+		echo $nros;
+	?>
+	</p>
+    </h2> 
+	<?php
+		while($resultados=mysqli_fetch_array($consulta)) {
+	?>
+    <p>
+    <?php	
+			echo $resultados['bio'] . "";
+	?>
+    </p>
+    <hr/>
+    <?php
+		}
+
+		mysqli_free_result($consulta);
+		mysqli_close($conexion);
+
+	?>
+</article>
+</section>
+
 <footer>
   <div class="redes">
     <p>Contáctanos por nuesta pestaña de <a href="contacto.html" style="color:wheat";>Contacto</a> o envía un correo a contacto@HF.com</p>

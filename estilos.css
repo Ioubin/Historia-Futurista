@@ -169,6 +169,14 @@ footer {
   padding: 1rem;
   letter-spacing: 2px;
 }
+.buscat {
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+    color: #f0b932;
+}
+
 
 
 @media (max-width: 768px) {
