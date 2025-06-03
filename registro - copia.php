@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html>
 <head>
@@ -39,57 +42,30 @@
                     <a href="contacto.html">Contacto</a>
                     </div>
         </nav>
-        <div class="boton">
-          <a href="login.html">Logueate o Registrate</a>
-          </div>
     </header>
 
 
+	<p>	Hola </p>
+	<?php
 
-    <section>
-      <div class="h2">
-      <h1>El futurismo es un movmiento donde la exaltacion de la velocidad , 
-         la tecnología y el progreso se unen junto a una juventud violenta 
-        para rechazar el pasado y las tradiciones</h1>
-      </div>
-    </section>
+if(isset($_SESSION['nombre']) and isset($_SESSION['apellido']) ){
+	
+echo "Hola! ";
+echo $_SESSION['nombre']." ";
+echo $_SESSION['apellido'];
+echo "<p><img src='imagenes/cuadro.jpg' /></p>";
+echo "<a href='salir.php'>Cerrar sesion</a>";
 
-<section>
-    <div class="fila">
-        <div class="columna">
-          <div class="image-container">
-            <a href="vanguardia.html">
-              <img src="img/manifesto.png" alt="Manifiesto Futurista">
-              <div class="overlay">
-                <div class="text">El Manifiesto Futurista</div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="columna">
-          <div class="image-container">
-            <a href="artistas.html">
-              <img src="img/futuristas.png" alt="Artistas Futuristas">
-              <div class="overlay">
-                <div class="text">Los Artistas</div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="columna">
-          <div class="image-container">
-            <a href="obras.html">
-              <img src="img/dinamismo.png" alt="Dinamismo">
-              <div class="overlay">
-                <div class="text">Las Obras</div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>  
-</section>
+	
+}else{
+	echo "Solo usuarios registrados...";
+	include("registro.php");
+	include("login.html");
+}
+?>
 
-   <footer>
+    
+    <footer>
       <div class="redes">
         <p>Contáctanos por nuesta pestaña de <a href="contacto.html" style="color:wheat";>Contacto</a> o envía un correo a contacto@HF.com</p>
         <p>Creado por Ignacio Oubiña</p>
@@ -117,41 +93,6 @@
             document.getElementById('navegador').classList.toggle('mostrarmenu');
         });
     </script>
-
-    <script>
-        let currentSlide = 0;
-         
-        function showSlide(index) {
-          const slides = document.querySelectorAll('.slide');
-          const totalSlides = slides.length;
-         
-          if (index >= totalSlides) {
-            currentSlide = 0;
-          } else if (index < 0) {
-            currentSlide = totalSlides - 1;
-          } else {
-            currentSlide = index;
-          }
-         
-          slides.forEach((slide, i) => {
-            slide.style.display = i === currentSlide ? 'block' : 'none';
-          });
-        }
-         
-        function nextSlide() {
-          showSlide(currentSlide + 1);
-        }
-         
-        function prevSlide() {
-          showSlide(currentSlide - 1);
-        }
-         
-        // Cambia automáticamente de diapositiva cada 3 segundos (ajusta según tus necesidades)
-        setInterval(nextSlide, 3000);
-         
-        // Muestra la primera diapositiva al cargar la página
-        showSlide(currentSlide);  
-        </script>
     
 </body>
 </html>

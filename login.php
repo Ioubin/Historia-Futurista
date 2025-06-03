@@ -33,63 +33,29 @@
                 <a href="obras.html">Obras</a>
                 </div>
                 <div class="boton">
-                  <a href="futu_ww2.php">Futurismo en la segunda guerra mundial</a>
+                  <a href="futu_ww2.html">Futurismo en la segunda guerra mundial</a>
                   </div>
                   <div class="boton">
                     <a href="contacto.html">Contacto</a>
                     </div>
         </nav>
-        <div class="boton">
-          <a href="login.html">Logueate o Registrate</a>
-          </div>
     </header>
 
-
-
-    <section>
-      <div class="h2">
-      <h1>El futurismo es un movmiento donde la exaltacion de la velocidad , 
-         la tecnología y el progreso se unen junto a una juventud violenta 
-        para rechazar el pasado y las tradiciones</h1>
-      </div>
-    </section>
-
-<section>
-    <div class="fila">
-        <div class="columna">
-          <div class="image-container">
-            <a href="vanguardia.html">
-              <img src="img/manifesto.png" alt="Manifiesto Futurista">
-              <div class="overlay">
-                <div class="text">El Manifiesto Futurista</div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="columna">
-          <div class="image-container">
-            <a href="artistas.html">
-              <img src="img/futuristas.png" alt="Artistas Futuristas">
-              <div class="overlay">
-                <div class="text">Los Artistas</div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="columna">
-          <div class="image-container">
-            <a href="obras.html">
-              <img src="img/dinamismo.png" alt="Dinamismo">
-              <div class="overlay">
-                <div class="text">Las Obras</div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>  
-</section>
-
-   <footer>
+    <div class="h2">
+    <h2>Logueate</h2>
+    </div>
+    <form action="login1.php" method="post">
+        <label>Nombre de usuario
+            <input name="usuario" type="text" required maxlength="12" />
+          </label><br />
+          <label>Contraseña
+            <input type="password" name="password" required maxlength="32" />
+          </label><br />
+            <input type="submit" value="Login"/>	
+      </form>
+      <a href="registro.html">Registrate</a> si no sos usuario.
+ 
+    <footer>
       <div class="redes">
         <p>Contáctanos por nuesta pestaña de <a href="contacto.html" style="color:wheat";>Contacto</a> o envía un correo a contacto@HF.com</p>
         <p>Creado por Ignacio Oubiña</p>
@@ -117,41 +83,6 @@
             document.getElementById('navegador').classList.toggle('mostrarmenu');
         });
     </script>
-
-    <script>
-        let currentSlide = 0;
-         
-        function showSlide(index) {
-          const slides = document.querySelectorAll('.slide');
-          const totalSlides = slides.length;
-         
-          if (index >= totalSlides) {
-            currentSlide = 0;
-          } else if (index < 0) {
-            currentSlide = totalSlides - 1;
-          } else {
-            currentSlide = index;
-          }
-         
-          slides.forEach((slide, i) => {
-            slide.style.display = i === currentSlide ? 'block' : 'none';
-          });
-        }
-         
-        function nextSlide() {
-          showSlide(currentSlide + 1);
-        }
-         
-        function prevSlide() {
-          showSlide(currentSlide - 1);
-        }
-         
-        // Cambia automáticamente de diapositiva cada 3 segundos (ajusta según tus necesidades)
-        setInterval(nextSlide, 3000);
-         
-        // Muestra la primera diapositiva al cargar la página
-        showSlide(currentSlide);  
-        </script>
     
 </body>
 </html>

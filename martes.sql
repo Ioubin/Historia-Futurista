@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2025 a las 22:05:39
+-- Tiempo de generación: 03-06-2025 a las 22:00:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -34,6 +34,10 @@ CREATE TABLE `artistas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
+-- RELACIONES PARA LA TABLA `artistas`:
+--
+
+--
 -- Volcado de datos para la tabla `artistas`
 --
 
@@ -55,6 +59,10 @@ CREATE TABLE `contactos` (
   `asunto` text NOT NULL,
   `mensaje` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- RELACIONES PARA LA TABLA `contactos`:
+--
 
 --
 -- Volcado de datos para la tabla `contactos`
@@ -80,6 +88,47 @@ INSERT INTO `contactos` (`id`, `nombre`, `email`, `asunto`, `mensaje`) VALUES
 (18, 'Juana', 'juana@outlook.com', 'Sugerencias', 'hola buen dias'),
 (19, 'Quique', 'quique@outlook.com', 'No funca', 'hola');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(5) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `usuario` varchar(12) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `newsletter` varchar(2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- RELACIONES PARA LA TABLA `usuarios`:
+--
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `usuario`, `password`, `newsletter`) VALUES
+(1, 'Guido', 'Varela', 'mail@mail.com', 'utn', '1234', NULL),
+(2, 'Guido', 'Varela', 'mail@mail.com', 'guido', '1234', 'si'),
+(3, 'Jose', 'Velez', 'mail@mail.com', 'balaperdida', '1234', 'si'),
+(4, 'Pepe', 'Lui', 'mail@mail.com', 'pepe', '1234', 'no'),
+(5, 'Pedro', 'Campañiolli', 'pepe@gmail.com', 'Pepito', '202cb962ac59', 'si'),
+(18, 'Jorge', 'Arturito', 'jorgear@gmail.com', 'Jorge', '5a0f035db329', 'si'),
+(28, 'Esteban', 'Rolo', 'esteban@gmail.com', 'Este', '81dc9bdb52d0', 'si'),
+(37, 'Tito', 'Gutierrez', 'tito@outlook.com', 'Tito', '81dc9bdb52d0', 'si'),
+(38, 'Mario', 'Acuña', 'marito@hotmail.com', 'marito', '$2y$10$C5i0O', 'si'),
+(40, 'Lola', 'Martina', 'lola@outlook.com', 'Lola', '$2y$10$a8Eg9', 'si'),
+(43, '', '', '', 'koko', '$2y$10$LqfDT', 'si'),
+(49, '', '', '', '', '$2y$10$T95aEPoCPFgSX30pDU8KLuKW8', 'si'),
+(50, '', '', '', '', '$2y$10$7BOYuwV9PrV2pijTn.gLouG3X', 'si'),
+(51, '', '', '', '', '$2y$10$hByApjPKtZC8djvHAok7kOYdd', 'si'),
+(52, '', '', '', 'utn', '$2y$10$Npu51Rne1NOZ4O8ebrsdOeRTZ', 'si');
+
 --
 -- Índices para tablas volcadas
 --
@@ -97,6 +146,12 @@ ALTER TABLE `contactos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -111,6 +166,12 @@ ALTER TABLE `artistas`
 --
 ALTER TABLE `contactos`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
