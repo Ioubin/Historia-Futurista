@@ -2,26 +2,53 @@
 
 session_start();
 
-$usuario=$_POST['usuario'];
-$password=$_POST['password'];
+$error_message = '';
+$show_error = false;
 
-include("conectar.php");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$usuario = $_POST['usuario'];
+	$password = $_POST['password'];
 
-$consulta=mysqli_query($conexion, "SELECT nombre, apellido, email FROM usuarios WHERE usuario='$usuario' AND password='$password'");
+	include("conectar.php");
 
-$resultado=mysqli_num_rows($consulta);
+	// First get the user's stored password
+	$consulta = mysqli_query($conexion, "SELECT nombre, apellido, email, password FROM usuarios WHERE usuario='$usuario'");
 
-if($resultado!=0){
-	$respuesta=mysqli_fetch_array($consulta);
-	
-	$_SESSION['nombre']=$respuesta['nombre'];
-	$_SESSION['apellido']=$respuesta['apellido'];
+	$resultado = mysqli_num_rows($consulta);
 
-}else{
-	echo "No es un usuario registrado";
-	include ("registro.php");
+	if ($resultado != 0) {
+		$respuesta = mysqli_fetch_array($consulta);
+		$stored_password = $respuesta['password'];
+		
+		// Check if the stored password is hashed (starts with $2y$)
+		if (strpos($stored_password, '$2y$') === 0) {
+			// Password is hashed, use password_verify
+			if (password_verify($password, $stored_password)) {
+				$_SESSION['nombre'] = $respuesta['nombre'];
+				$_SESSION['apellido'] = $respuesta['apellido'];
+				header("Location: futu_ww2.php");
+				exit();
+			} else {
+				$error_message = "Contraseña incorrecta";
+				$show_error = true;
+			}
+		} else {
+			// Password is plain text, compare directly
+			if ($password === $stored_password) {
+				$_SESSION['nombre'] = $respuesta['nombre'];
+				$_SESSION['apellido'] = $respuesta['apellido'];
+				header("Location: futu_ww2.php");
+				exit();
+			} else {
+				$error_message = "Contraseña incorrecta";
+				$show_error = true;
+			}
+		}
+	} else {
+		$error_message = "Usuario no encontrado";
+		$show_error = true;
+	}
 }
-	
 ?>
 <!doctype html>
 <html>
@@ -35,6 +62,77 @@ if($resultado!=0){
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #28231e;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .login-container h2 {
+            color: #f0b932;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .login-form label {
+            color: white;
+            font-size: 1.2rem;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #f0b932;
+            border-radius: 5px;
+            background: #aa9687;
+            color: white;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 1.1rem;
+        }
+        .login-form input[type="submit"] {
+            background: #f0b932;
+            color: #28231e;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .login-form input[type="submit"]:hover {
+            background: #a4abaf;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .register-link a {
+            color: #f0b932;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .register-link a:hover {
+            color: #a4abaf;
+        }
+        .error-message {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+    </style>
     </head>
 <body>
     <header>
@@ -58,7 +156,7 @@ if($resultado!=0){
                 <a href="obras.html">Obras</a>
                 </div>
                 <div class="boton">
-                  <a href="futu_ww2.php">Futurismo en la segunda guerra mundial</a>
+                  <a href="futu_ww2.html">Futurismo en la segunda guerra mundial</a>
                   </div>
                   <div class="boton">
                     <a href="contacto.html">Contacto</a>
@@ -66,11 +164,27 @@ if($resultado!=0){
         </nav>
     </header>
 
-    <?php 
-		echo "Hola ".$_SESSION['nombre']." ".$_SESSION['apellido']."<br />";
-		echo "Acceso al panel de usuarios.<br/>";
-		echo "<a href='futu_ww2.php'>Contenido Sensible</a>";	
-?>
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <?php if($show_error): ?>
+            <div class="error-message">
+                <?php echo $error_message; ?>
+            </div>
+        <?php endif; ?>
+        <form action="login1.php" method="post" class="login-form">
+            <label>Nombre de usuario
+                <input name="usuario" type="text" required maxlength="12" value="<?php echo isset($_POST['usuario']) ? htmlspecialchars($_POST['usuario']) : ''; ?>" />
+            </label>
+            <label>Contraseña
+                <input type="password" name="password" required maxlength="32" />
+            </label>
+            <input type="submit" value="Iniciar Sesión"/>
+        </form>
+        <div class="register-link">
+            <a href="registro.html">¿No tienes cuenta? Regístrate aquí</a>
+        </div>
+    </div>
+ 
     <footer>
       <div class="redes">
         <p>Contáctanos por nuesta pestaña de <a href="contacto.html" style="color:wheat";>Contacto</a> o envía un correo a contacto@HF.com</p>

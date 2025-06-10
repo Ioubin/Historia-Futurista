@@ -1,22 +1,14 @@
 <?php
 session_start();
 
-
-if(isset($_SESSION['nombre']) and isset($_SESSION['apellido']) ){
-	
-    echo "Hola! ";
-    echo $_SESSION['nombre']." ";
-    echo $_SESSION['apellido'];
-    echo "<p><img src='imagenes/cuadro.jpg' /></p>";
-    echo "<a href='salir.php'>Cerrar sesion</a>";
-    
-        
-    }else{
-        echo "Solo usuarios registrados...";
-        include("registro.php");
-        include("login.html");
-    }
-    ?>
+if(isset($_SESSION['nombre']) and isset($_SESSION['apellido'])) {
+    $welcome_message = "Bienvenido " . $_SESSION['nombre'] . " " . $_SESSION['apellido'];
+    $show_content = true;
+} else {
+    $welcome_message = "Contenido Exclusivo";
+    $show_content = false;
+}
+?>
 <!doctype html>
 <html>
 <head>
@@ -30,6 +22,61 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido']) ){
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <style>
+        .login-message {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #28231e;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            color: white;
+        }
+        .login-message h2 {
+            color: #f0b932;
+            margin-bottom: 1rem;
+        }
+        .login-message p {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        .login-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .login-buttons a {
+            background: #f0b932;
+            color: #28231e;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+        }
+        .login-buttons a:hover {
+            background: #a4abaf;
+        }
+        .welcome-message {
+            text-align: center;
+            color: #f0b932;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+        .logout-link {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .logout-link a {
+            color: #f0b932;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .logout-link a:hover {
+            color: #a4abaf;
+        }
+    </style>
     </head>
 <body>
   <header>
@@ -61,6 +108,25 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido']) ){
       </nav>
   </header>
 
+    <?php if($show_content): ?>
+        <div class="welcome-message">
+            <?php echo $welcome_message; ?>
+        </div>
+        <div class="logout-link">
+            <a href="salir.php">Cerrar sesión</a>
+        </div>
+    <?php else: ?>
+        <div class="login-message">
+            <h2>Contenido Exclusivo</h2>
+            <p>Esta sección es solo para usuarios registrados. Por favor inicia sesión o regístrate para acceder al contenido.</p>
+            <div class="login-buttons">
+                <a href="login.html">Iniciar Sesión</a>
+                <a href="registro.html">Registrarse</a>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if($show_content): ?>
     <div class="h2">   
         <h2> El futurismo en la segunda guerra mundial </h2>
     </div>
@@ -101,6 +167,7 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido']) ){
   
 <p>Tras la muerte de Marinetti en 1944 y el colapso del régimen fascista en 1945, el Futurismo quedó asociado a una etapa oscura de la historia italiana. Su legado artístico, aunque innovador, fue eclipsado durante décadas por su conexión con la propaganda de guerra y la política totalitaria. No obstante, con el paso del tiempo, el Futurismo fue reevaluado por su importancia en la evolución de las vanguardias del siglo XX, separando sus logros estéticos de sus vínculos ideológicos.</p>
 </div>
+    <?php endif; ?>
 
      <footer>
       <div class="redes">

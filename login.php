@@ -10,6 +10,67 @@
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #28231e;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .login-container h2 {
+            color: #f0b932;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .login-form label {
+            color: white;
+            font-size: 1.2rem;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #f0b932;
+            border-radius: 5px;
+            background: #aa9687;
+            color: white;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 1.1rem;
+        }
+        .login-form input[type="submit"] {
+            background: #f0b932;
+            color: #28231e;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .login-form input[type="submit"]:hover {
+            background: #a4abaf;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .register-link a {
+            color: #f0b932;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .register-link a:hover {
+            color: #a4abaf;
+        }
+    </style>
     </head>
 <body>
     <header>
@@ -41,19 +102,21 @@
         </nav>
     </header>
 
-    <div class="h2">
-    <h2>Logueate</h2>
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form action="login1.php" method="post" class="login-form">
+            <label>Nombre de usuario
+                <input name="usuario" type="text" required maxlength="12" />
+            </label>
+            <label>Contraseña
+                <input type="password" name="password" required maxlength="32" />
+            </label>
+            <input type="submit" value="Iniciar Sesión"/>
+        </form>
+        <div class="register-link">
+            <a href="registro.html">¿No tienes cuenta? Regístrate aquí</a>
+        </div>
     </div>
-    <form action="login1.php" method="post">
-        <label>Nombre de usuario
-            <input name="usuario" type="text" required maxlength="12" />
-          </label><br />
-          <label>Contraseña
-            <input type="password" name="password" required maxlength="32" />
-          </label><br />
-            <input type="submit" value="Login"/>	
-      </form>
-      <a href="registro.html">Registrate</a> si no sos usuario.
  
     <footer>
       <div class="redes">

@@ -8,35 +8,37 @@
 <body>
 
 <?php
-	$nombre = $_POST['nombre'];
-	$apellido = $_POST['apellido'];
-	$email = $_POST['email'];
-	$usuario = $_POST['usuario'];
-	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    include("conectar.php");
 
-/*if(isset($_POST['newsletter'])){
-	$news="si";
-}else{
-	$news="no";
-}*/
-	if ($_POST['newsletter'] === "") {
-		$news="no";
-	} else {
-		$news="si";
-	}
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $email = $_POST['email'];
+    $usuario = $_POST['usuario'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+    // Check if username already exists
+    $check_user = mysqli_query($conexion, "SELECT usuario FROM usuarios WHERE usuario='$usuario'");
+    if(mysqli_num_rows($check_user) > 0) {
+        echo "El nombre de usuario ya existe. Por favor elija otro.";
+        exit();
+    }
 
-	include("conectar.php");
+    if ($_POST['newsletter'] === "") {
+        $news="no";
+    } else {
+        $news="si";
+    }
 
-	$_SESSION['nombre'] = $nombre;
+    $_SESSION['nombre'] = $nombre;
 
-	$consulta = mysqli_query($conexion, "INSERT INTO usuarios (nombre, apellido, email, usuario, password, newsletter) VALUES('$nombre','$apellido','$email', '$usuario', '$password', '$news')");
+    $consulta = mysqli_query($conexion, "INSERT INTO usuarios (nombre, apellido, email, usuario, password, newsletter) VALUES('$nombre','$apellido','$email', '$usuario', '$password', '$news')");
 
-
-	header("Location:login.html");
-
-?>	
-    
+    if($consulta) {
+        header("Location:login.html");
+    } else {
+        echo "Error al registrar usuario. Por favor intente nuevamente.";
+    }
+?>    
 
 </body>
 </html>
