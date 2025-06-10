@@ -10,36 +10,71 @@
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <style>
+        .auth-links {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+        .auth-links a {
+            color: #f0b932;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid #f0b932;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .auth-links a:hover {
+            background: #f0b932;
+            color: #28231e;
+        }
+        @media (max-width: 768px) {
+            .auth-links {
+                display: none;
+            }
+        }
+    </style>
     </head>
 <body>
     <header>
-      <div class="logo">
-         <a href="index.html"><img src="img/logo.png"></a>
-      </div>
+        <div class="auth-links">
+            <a href="login.php">Iniciar Sesión</a>
+            <a href="registro.html">Registrarse</a>
+        </div>
+        <div class="logo">
+            <a href="index.html"><img src="img/logo.png"></a>
+        </div>
         <div class="esco">
-          <a href="#" id="icono"> <i class="fa fa-bars" style="color:black"; aria-hidden="true"></i> </a>
+            <a href="#" id="icono"> <i class="fa fa-bars" style="color:black"; aria-hidden="true"></i> </a>
         </div>
         <nav id="navegador"> 
-          <div class="boton">
-               <a href="vanguardia.html">Vanguardia</a>
-              </div>
-          <div class="boton">
-              <a href="linea de tiempo.html">Linea de Tiempo</a>
-              </div>
-          <div class="boton">
-              <a href="artistas.html">Artistas</a>
-              </div>
-              <div class="boton">
+            <div class="boton">
+                <a href="vanguardia.html">Vanguardia</a>
+            </div>
+            <div class="boton">
+                <a href="linea de tiempo.html">Linea de Tiempo</a>
+            </div>
+            <div class="boton">
+                <a href="artistas.html">Artistas</a>
+            </div>
+            <div class="boton">
                 <a href="obras.html">Obras</a>
-                </div>
-                <div class="boton">
-                  <a href="futu_ww2.html">Futurismo en la segunda guerra mundial</a>
-                  </div>
-                  <div class="boton">
-                    <a href="contacto.html">Contacto</a>
-                    </div>
+            </div>
+            <div class="boton">
+                <a href="futu_ww2.php">Futurismo en la segunda guerra mundial</a>
+            </div>
+            <div class="boton">
+                <a href="contacto.html">Contacto</a>
+            </div>
         </nav>
     </header>
+
+
+
   
    <section class="timeline-section">  
     <h1 class="timeline-title">Línea de Tiempo del Futurismo</h1>

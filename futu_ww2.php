@@ -5,7 +5,7 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido'])) {
     $welcome_message = "Bienvenido " . $_SESSION['nombre'] . " " . $_SESSION['apellido'];
     $show_content = true;
 } else {
-    $welcome_message = "Contenido Exclusivo";
+    $welcome_message = "Contenido Sensible";
     $show_content = false;
 }
 ?>
@@ -100,7 +100,7 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido'])) {
               <a href="obras.html">Obras</a>
               </div>
               <div class="boton">
-                <a href="futu_ww2.html">Futurismo en la segunda guerra mundial</a>
+                <a href="futu_ww2.php">Futurismo en la segunda guerra mundial</a>
                 </div>
                 <div class="boton">
                   <a href="contacto.html">Contacto</a>
@@ -120,7 +120,7 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido'])) {
             <h2>Contenido Exclusivo</h2>
             <p>Esta sección es solo para usuarios registrados. Por favor inicia sesión o regístrate para acceder al contenido.</p>
             <div class="login-buttons">
-                <a href="login.html">Iniciar Sesión</a>
+                <a href="login.php">Iniciar Sesión</a>
                 <a href="registro.html">Registrarse</a>
             </div>
         </div>

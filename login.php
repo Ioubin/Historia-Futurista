@@ -35,7 +35,7 @@
         }
         .login-form input[type="text"],
         .login-form input[type="password"] {
-            width: 100%;
+            width: 95%;
             padding: 0.8rem;
             border: 2px solid #f0b932;
             border-radius: 5px;
@@ -94,7 +94,7 @@
                 <a href="obras.html">Obras</a>
                 </div>
                 <div class="boton">
-                  <a href="futu_ww2.html">Futurismo en la segunda guerra mundial</a>
+                  <a href="futu_ww2.php">Futurismo en la segunda guerra mundial</a>
                   </div>
                   <div class="boton">
                     <a href="contacto.html">Contacto</a>

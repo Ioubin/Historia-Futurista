@@ -1,55 +1,32 @@
-<?php
+<?php session_start ();
 
-session_start();
 
-$error_message = '';
-$show_error = false;
+$usuario=$_POST['usuario'];
+$password=md5 ($_POST['password']);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	$usuario = $_POST['usuario'];
-	$password = $_POST['password'];
+include("conectar.php");
 
-	include("conectar.php");
+$consulta=mysqli_query($conexion, "SELECT nombre, apellido, email FROM usuarios WHERE usuario='$usuario' AND password='$password'");
 
-	// First get the user's stored password
-	$consulta = mysqli_query($conexion, "SELECT nombre, apellido, email, password FROM usuarios WHERE usuario='$usuario'");
+$resultado=mysqli_num_rows($consulta);
 
-	$resultado = mysqli_num_rows($consulta);
-
-	if ($resultado != 0) {
-		$respuesta = mysqli_fetch_array($consulta);
-		$stored_password = $respuesta['password'];
+if($resultado!=0){
+	$respuesta=mysqli_fetch_array($consulta);
+	
+	$_SESSION['nombre']=$respuesta['nombre'];
+	$_SESSION['apellido']=$respuesta['apellido'];
 		
-		// Check if the stored password is hashed (starts with $2y$)
-		if (strpos($stored_password, '$2y$') === 0) {
-			// Password is hashed, use password_verify
-			if (password_verify($password, $stored_password)) {
-				$_SESSION['nombre'] = $respuesta['nombre'];
-				$_SESSION['apellido'] = $respuesta['apellido'];
-				header("Location: futu_ww2.php");
-				exit();
-			} else {
-				$error_message = "Contraseña incorrecta";
-				$show_error = true;
-			}
-		} else {
-			// Password is plain text, compare directly
-			if ($password === $stored_password) {
-				$_SESSION['nombre'] = $respuesta['nombre'];
-				$_SESSION['apellido'] = $respuesta['apellido'];
-				header("Location: futu_ww2.php");
-				exit();
-			} else {
-				$error_message = "Contraseña incorrecta";
-				$show_error = true;
-			}
-		}
-	} else {
-		$error_message = "Usuario no encontrado";
-		$show_error = true;
-	}
+		echo "Hola ".$_SESSION['nombre']." ".$_SESSION['apellido']."<br />";
+		echo "Acceso al panel de usuarios.<br/>";
+		echo "<a href='panel.php'>Panel</a>";	
+
+}else{
+	echo "No es un usuario registrado";
+	include ("form_registro.php");
 }
+
 ?>
+
 <!doctype html>
 <html>
 <head>

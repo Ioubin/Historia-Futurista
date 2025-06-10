@@ -14,22 +14,8 @@
     $apellido = $_POST['apellido'];
     $email = $_POST['email'];
     $usuario = $_POST['usuario'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = md5($_POST['password']);
 
-    // Check if username already exists
-    $check_user = mysqli_query($conexion, "SELECT usuario FROM usuarios WHERE usuario='$usuario'");
-    if(mysqli_num_rows($check_user) > 0) {
-        echo "El nombre de usuario ya existe. Por favor elija otro.";
-        exit();
-    }
-
-    if ($_POST['newsletter'] === "") {
-        $news="no";
-    } else {
-        $news="si";
-    }
-
-    $_SESSION['nombre'] = $nombre;
 
     $consulta = mysqli_query($conexion, "INSERT INTO usuarios (nombre, apellido, email, usuario, password, newsletter) VALUES('$nombre','$apellido','$email', '$usuario', '$password', '$news')");
 
