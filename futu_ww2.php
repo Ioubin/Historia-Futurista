@@ -126,12 +126,16 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido'])) {
                 <div class="boton">
                   <a href="contacto.html">Contacto</a>
                   </div>
+                  </div>
+            <div class="boton">
+              <a href="tienda.php">Tienda</a>
+          </div>
       </nav>
   </header>
 
     <?php if(!$show_content): ?>
         <div class="login-message">
-            <h2>Contenido Exclusivo</h2>
+            <h2>Contenido Sensible</h2>
             <p>Esta sección es solo para usuarios registrados. Por favor inicia sesión o regístrate para acceder al contenido.</p>
             <div class="login-buttons">
                 <a href="login.php">Iniciar Sesión</a>

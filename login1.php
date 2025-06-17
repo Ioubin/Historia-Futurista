@@ -27,7 +27,7 @@ if (!empty($usuario) && !empty($password)) {
         $welcome_html .= "</div>";
     } else {
         $show_error = true;
-        $error_message = "No es un usuario registrado";
+        $error_message = "Usuario o contraseña incorrecta";
     }
 }
 ?>
@@ -171,11 +171,14 @@ if (!empty($usuario) && !empty($password)) {
                 <a href="obras.html">Obras</a>
                 </div>
                 <div class="boton">
-                  <a href="futu_ww2.html">Futurismo en la segunda guerra mundial</a>
+                  <a href="futu_ww2.php">Futurismo en la segunda guerra mundial</a>
                   </div>
                   <div class="boton">
                     <a href="contacto.html">Contacto</a>
                     </div>
+                    <div class="boton">
+              <a href="tienda.php">Tienda</a>
+          </div>
         </nav>
     </header>
 

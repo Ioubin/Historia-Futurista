@@ -248,73 +248,73 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido'])) {
         <div class="store-grid">
             <div class="store-item" data-product-id="1" data-product-name="Póster Futurista" data-product-price="10.00">
                 <img src="img/obras/para.png" alt="Póster Futurista" />
-                <h3>Póster Futurista</h3>
-                <p class="price">$10.00</p>
+                <h3>Antes de que se abra el paracaídas-Tullio-1939</h3>
+                <p class="price">$15.00</p>
                 <button class="buy-btn">Comprar</button>
             </div>
             <div class="store-item" data-product-id="2" data-product-name="Libro de Arte" data-product-price="25.00">
                 <img src="img/obras/gen.png" alt="Libro de Arte" />
-                <h3>Libro de Arte</h3>
+                <h3>Gente del Futuro-Yuon-1929</h3>
                 <p class="price">$25.00</p>
                 <button class="buy-btn">Comprar</button>
             </div>
             <div class="store-item" data-product-id="3" data-product-name="Estampa Coleccionable" data-product-price="5.00">
                 <img src="img/obras/luz.png" alt="Estampa Coleccionable" />
-                <h3>Estampa Coleccionable</h3>
-                <p class="price">$5.00</p>
+                <h3>Luz de Calle-Giacomo-1909</h3>
+                <p class="price">$55.00</p>
                 <button class="buy-btn">Comprar</button>
             </div>
             <div class="store-item" data-product-id="4" data-product-name="Cuadro Decorativo" data-product-price="40.00">
                 <img src="img/obras/bomb.png" alt="Cuadro Decorativo" />
-                <h3>Cuadro Decorativo</h3>
+                <h3>Bombardeo Aéreo-Tullio-1932</h3>
                 <p class="price">$40.00</p>
                 <button class="buy-btn">Comprar</button>
             </div>
              <div class="store-item" data-product-id="5" data-product-name="Taza de Café Futurista" data-product-price="15.00">
                 <img src="img/obras/cafe.png" alt="Taza de Café Futurista" />
-                <h3>Taza de Café Futurista</h3>
+                <h3>Disturbios en la Galería-Boccioni-1919</h3>
                 <p class="price">$15.00</p>
                 <button class="buy-btn">Comprar</button>
             </div>
             <div class="store-item" data-product-id="6" data-product-name="Avión de Juguete" data-product-price="30.00">
                 <img src="img/obras/plane.png" alt="Avión de Juguete" />
-                <h3>Avión de Juguete</h3>
+                <h3>Nuevo Planeta-Yuon-1921</h3>
                 <p class="price">$30.00</p>
                 <button class="buy-btn">Comprar</button>
               </div>
               <div class="store-item" data-product-id="7" data-product-name="Textil Abstracto" data-product-price="20.00">
                   <img src="img/obras/tela.png" alt="Textil Abstracto" />
-                  <h3>Textil Abstracto</h3>
+                  <h3>Trabajadores textiles-Deineka-1917</h3>
                   <p class="price">$20.00</p>
                   <button class="buy-btn">Comprar</button>
               </div>
               <div class="store-item" data-product-id="8" data-product-name="Coche Veloz" data-product-price="35.00">
                   <img src="img/obras/auto.png" alt="Coche Veloz" />
-                  <h3>Coche Veloz</h3>
+                  <h3>Velocidad del Automovi-Balla-1913</h3>
                   <p class="price">$35.00</p>
                   <button class="buy-btn">Comprar</button>
               </div>
               <div class="store-item" data-product-id="9" data-product-name="Almohada Futurista" data-product-price="18.00">
                  <img src="img/obras/alm.png" alt="Almohada Futurista" />
-                 <h3>Almohada Futurista</h3>
+                 <h3>El alma de la ciudad sin alma-Nevinson-1920</h3>
                  <p class="price">$18.00</p>
                  <button class="buy-btn">Comprar</button>
              </div>
              <div class="store-item" data-product-id="10" data-product-name="Dinamismo Urbano" data-product-price="50.00">
                  <img src="img/obras/dinamismo.png" alt="Dinamismo Urbano" />
-                 <h3>Dinamismo Urbano</h3>
+                 <h3>Dinamismo de perro con correa-Balla-1912</h3>
                  <p class="price">$50.00</p>
                  <button class="buy-btn">Comprar</button>
                </div>
                <div class="store-item" data-product-id="11" data-product-name="Ferrovia" data-product-price="22.00">
                    <img src="img/obras/ferra.png" alt="Ferrovia" />
-                   <h3>Ferrovia</h3>
+                   <h3>Ruedas Fervientes-Desconocido-1941</h3>
                    <p class="price">$22.00</p>
                    <button class="buy-btn">Comprar</button>
                </div>
                <div class="store-item" data-product-id="12" data-product-name="Martillo del Futuro" data-product-price="12.00">
                    <img src="img/obras/mart.png" alt="Martillo del Futuro" />
-                   <h3>Martillo del Futuro</h3>
+                   <h3>Martillo Neumático-Epstein-1913</h3>
                    <p class="price">$12.00</p>
                    <button class="buy-btn">Comprar</button>
                </div>

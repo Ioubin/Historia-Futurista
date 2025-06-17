@@ -99,6 +99,9 @@
                   <div class="boton">
                     <a href="contacto.html">Contacto</a>
                     </div>
+                    <div class="boton">
+              <a href="tienda.php">Tienda</a>
+          </div>
         </nav>
     </header>
 
@@ -114,7 +117,7 @@
             <input type="submit" value="Iniciar Sesión"/>
         </form>
         <div class="register-link">
-            <a href="registro.html">¿No tienes cuenta? Regístrate aquí</a>
+            <a href="registro.html">¿No tenes cuenta? Regístrate acá</a>
         </div>
     </div>
  
