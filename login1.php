@@ -1,30 +1,35 @@
 <?php session_start ();
 
+$show_error = false;
+$error_message = '';
 
-$usuario=$_POST['usuario'];
-$password=md5 ($_POST['password']);
+$usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+$password = isset($_POST['password']) ? md5($_POST['password']) : '';
 
 include("conectar.php");
 
-$consulta=mysqli_query($conexion, "SELECT nombre, apellido, email FROM usuarios WHERE usuario='$usuario' AND password='$password'");
+$show_welcome = false;
+$welcome_html = '';
 
-$resultado=mysqli_num_rows($consulta);
-
-if($resultado!=0){
-	$respuesta=mysqli_fetch_array($consulta);
-	
-	$_SESSION['nombre']=$respuesta['nombre'];
-	$_SESSION['apellido']=$respuesta['apellido'];
-		
-		echo "Hola ".$_SESSION['nombre']." ".$_SESSION['apellido']."<br />";
-		echo "Acceso al panel de usuarios.<br/>";
-		echo "<a href='panel.php'>Panel</a>";	
-
-}else{
-	echo "No es un usuario registrado";
-	include ("form_registro.php");
+if (!empty($usuario) && !empty($password)) {
+    $consulta = mysqli_query($conexion, "SELECT nombre, apellido, email FROM usuarios WHERE usuario='$usuario' AND password='$password'");
+    $resultado = mysqli_num_rows($consulta);
+    if ($resultado != 0) {
+        $respuesta = mysqli_fetch_array($consulta);
+        $_SESSION['nombre'] = $respuesta['nombre'];
+        $_SESSION['apellido'] = $respuesta['apellido'];
+        // Prepare welcome message for later output in body
+        $show_welcome = true;
+        $welcome_html = "<div class='welcome-message'>";
+        $welcome_html .= "<h2>¡Bienvenido, " . htmlspecialchars($_SESSION['nombre']) . " " . htmlspecialchars($_SESSION['apellido']) . "!</h2>";
+        $welcome_html .= "<p>Acceso al panel de usuarios.</p>";
+        $welcome_html .= "<a class='panel-link' href='futu_ww2.php'>Ir al Panel</a>";
+        $welcome_html .= "</div>";
+    } else {
+        $show_error = true;
+        $error_message = "No es un usuario registrado";
+    }
 }
-
 ?>
 
 <!doctype html>
@@ -109,6 +114,39 @@ if($resultado!=0){
             text-align: center;
             font-size: 1.1rem;
         }
+        .welcome-message {
+            background: #28231e;
+            color: #f0b932;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .welcome-message h2 {
+            margin-bottom: 1rem;
+            color: #f0b932;
+            font-size: 2rem;
+        }
+        .welcome-message p {
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        .panel-link {
+            display: inline-block;
+            background: #f0b932;
+            color: #28231e;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .panel-link:hover {
+            background: #a4abaf;
+            color: #28231e;
+        }
     </style>
     </head>
 <body>
@@ -140,6 +178,8 @@ if($resultado!=0){
                     </div>
         </nav>
     </header>
+
+    <?php if($show_welcome) echo $welcome_html; ?>
 
     <div class="login-container">
         <h2>Iniciar Sesión</h2>

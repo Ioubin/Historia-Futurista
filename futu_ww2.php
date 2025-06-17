@@ -58,23 +58,38 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido'])) {
         .login-buttons a:hover {
             background: #a4abaf;
         }
-        .welcome-message {
-            text-align: center;
-            color: #f0b932;
-            margin: 1rem 0;
-            font-size: 1.2rem;
+        .user-info {
+    position: absolute;
+    top: 24px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    z-index: 10;
+    align-items: center;
         }
-        .logout-link {
-            text-align: center;
-            margin: 1rem 0;
-        }
-        .logout-link a {
+        .user-info .welcome-message {
             color: #f0b932;
+            background: transparent;
+            font-size: 1.1rem;
+            margin: 0;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        .user-info .logout-link a {
+            background: transparent;
+            color: #f0b932;
+            border: 2px solid #f0b932;
+            border-radius: 5px;
+            padding: 0.5rem 1.2rem;
             text-decoration: none;
             font-size: 1.1rem;
+            transition: background 0.3s, color 0.3s;
+            margin-left: 0;
         }
-        .logout-link a:hover {
-            color: #a4abaf;
+        .user-info .logout-link a:hover {
+            background: #a4abaf;
+            color: #28231e;
         }
     </style>
     </head>
@@ -83,6 +98,12 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido'])) {
     <div class="logo">
        <a href="index.html"><img src="img/logo.png"></a>
     </div>
+    <?php if($show_content): ?>
+    <div class="user-info">
+        <span class="welcome-message"><?php echo $welcome_message; ?></span>
+        <span class="logout-link"><a href="salir.php">Cerrar sesión</a></span>
+    </div>
+    <?php endif; ?>
       <div class="esco">
         <a href="#" id="icono"> <i class="fa fa-bars" style="color:black"; aria-hidden="true"></i> </a>
       </div>
@@ -108,14 +129,7 @@ if(isset($_SESSION['nombre']) and isset($_SESSION['apellido'])) {
       </nav>
   </header>
 
-    <?php if($show_content): ?>
-        <div class="welcome-message">
-            <?php echo $welcome_message; ?>
-        </div>
-        <div class="logout-link">
-            <a href="salir.php">Cerrar sesión</a>
-        </div>
-    <?php else: ?>
+    <?php if(!$show_content): ?>
         <div class="login-message">
             <h2>Contenido Exclusivo</h2>
             <p>Esta sección es solo para usuarios registrados. Por favor inicia sesión o regístrate para acceder al contenido.</p>
